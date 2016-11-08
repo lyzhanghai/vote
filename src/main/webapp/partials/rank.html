@@ -1,0 +1,38 @@
+<div class="wxhd_sign">
+	<a href="/srdz/vote/entry">我要报名</a>
+</div>
+
+<form action="expand_wa_WaActVoteEntry_showList" method="post">
+	<div class="wxhd_search clearfix">
+		<input type="text" name="sarg1" placeholder="请输入名字或编号" ng-model="condition" >
+		<input type="hidden" name="rank" value="">
+		<input type="hidden" name="vote.pkey" value="">
+		<a ng-click="search()"></a>
+	</div>
+</form>
+
+<div>
+	<div class="wxhd_tabs">
+		<ul class="clearfix">
+			<li ng-class="{curr:orderBy==1}"><a ng-click="orderBy=1;search()">最新参赛</a></li>
+			<li ng-class="{curr:orderBy==2}"><a ng-click="orderBy=2;search()">投票排行</a></li>
+		</ul>
+	</div>
+	<div id="wx_container" class="wxhd_conts" masonry>
+		<ul>
+		<li class="masonry-brick" entry="{{entry.id}}" ng-repeat="entry in entrys" >
+			<a ng-click="showDetail(entry)">
+				<img ng-src="{{entry.picUrl}}">
+			</a>
+			<p class="wxhd_conts_li_num" ng-bind="entry.number|numberFilter"></p>
+		    <div class="wxhd_conts_li_btn">
+		        <span ng-bind="entry.record|recordFilter"></span>
+		        <a href="javascript:void(0);">给TA投票</a>
+		    </div>
+		</li>
+		</ul>
+	</div>
+	<div class="wxhd_loadmore">
+		<a ng-click="getMore()">加载更多</a>
+	</div>
+</div>

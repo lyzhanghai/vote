@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" /><!-- 开发模式 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<constant name="struts.multipart.maxSize" value="204857600" />
+	<constant name="struts.objectFactory" value="spring"/>
+	
+	<package name="vote" namespace="/" extends="struts-default">
+		<action name="*" class="voteAction">
+			<result>/index.html</result>
+		</action>
+	</package>
+	
+</struts>
