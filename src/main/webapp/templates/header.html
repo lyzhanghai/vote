@@ -1,7 +1,7 @@
-<div class="banner" ng-if="banners">
+<div class="banner" ng-if="actionInfo&&actionInfo.banners">
 	<div class="bd">
 	    <ul rn-carousel rn-carousel-auto-slide rn-carousel-loop class="carousel1">
-			<li ng-repeat="banner in banners">
+			<li ng-repeat="banner in actionInfo.banners">
 				<a ng-href="{{banner.linkUrl}}">
 					<img ng-src="{{banner.picUrl}}" des="{{banner.title}}"/>
 				</a>

@@ -1,5 +1,5 @@
 <div class="wxhd_sign">
-	<a href="/srdz/vote/entry">我要报名</a>
+	<a ng-click="switchTab(2)">我要报名</a>
 </div>
 
 <form action="expand_wa_WaActVoteEntry_showList" method="post">
@@ -27,7 +27,7 @@
 			<p class="wxhd_conts_li_num" ng-bind="entry.number|numberFilter"></p>
 		    <div class="wxhd_conts_li_btn">
 		        <span ng-bind="entry.record|recordFilter"></span>
-		        <a href="javascript:void(0);">给TA投票</a>
+		        <a ng-click="vote(entry)">给TA投票</a>
 		    </div>
 		</li>
 		</ul>

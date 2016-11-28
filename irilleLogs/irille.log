@@ -1,0 +1,84 @@
+[2016-11-11 13:22:10][INFO ] org.springframework.context.support.ClassPathXmlApplicationContext
+Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@136432db: startup date [Fri Nov 11 13:22:10 CST 2016]; root of context hierarchy
+[2016-11-11 13:22:10][INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader
+Loading XML bean definitions from class path resource [applicationContext.xml]
+[2016-11-11 13:22:11][INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader
+Loading XML bean definitions from class path resource [spring-bean.xml]
+[2016-11-11 13:22:11][INFO ] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2016-11-11 13:22:11][INFO ] org.springframework.jdbc.datasource.DriverManagerDataSource
+Loaded JDBC driver: com.mysql.jdbc.Driver
+[2016-11-11 13:22:14][INFO ] org.springframework.orm.hibernate5.HibernateTransactionManager
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@27a7ef08] of Hibernate SessionFactory for HibernateTransactionManager
+[2016-11-11 13:25:26][INFO ] org.springframework.context.support.ClassPathXmlApplicationContext
+Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@136432db: startup date [Fri Nov 11 13:25:26 CST 2016]; root of context hierarchy
+[2016-11-11 13:25:26][INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader
+Loading XML bean definitions from class path resource [applicationContext.xml]
+[2016-11-11 13:25:27][INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader
+Loading XML bean definitions from class path resource [spring-bean.xml]
+[2016-11-11 13:25:27][INFO ] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2016-11-11 13:25:28][INFO ] org.springframework.jdbc.datasource.DriverManagerDataSource
+Loaded JDBC driver: com.mysql.jdbc.Driver
+[2016-11-11 13:25:31][INFO ] org.springframework.orm.hibernate5.HibernateTransactionManager
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@27a7ef08] of Hibernate SessionFactory for HibernateTransactionManager
+[2016-11-11 13:26:00][INFO ] org.springframework.context.support.ClassPathXmlApplicationContext
+Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@136432db: startup date [Fri Nov 11 13:26:00 CST 2016]; root of context hierarchy
+[2016-11-11 13:26:00][INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader
+Loading XML bean definitions from class path resource [applicationContext.xml]
+[2016-11-11 13:26:01][INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader
+Loading XML bean definitions from class path resource [spring-bean.xml]
+[2016-11-11 13:26:01][INFO ] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2016-11-11 13:26:01][INFO ] org.springframework.jdbc.datasource.DriverManagerDataSource
+Loaded JDBC driver: com.mysql.jdbc.Driver
+[2016-11-11 13:26:05][INFO ] org.springframework.orm.hibernate5.HibernateTransactionManager
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@27a7ef08] of Hibernate SessionFactory for HibernateTransactionManager
+[2016-11-11 13:26:10][INFO ] org.springframework.context.support.ClassPathXmlApplicationContext
+Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@136432db: startup date [Fri Nov 11 13:26:10 CST 2016]; root of context hierarchy
+[2016-11-11 13:26:10][INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader
+Loading XML bean definitions from class path resource [applicationContext.xml]
+[2016-11-11 13:26:11][INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader
+Loading XML bean definitions from class path resource [spring-bean.xml]
+[2016-11-11 13:26:11][INFO ] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2016-11-11 13:26:12][INFO ] org.springframework.jdbc.datasource.DriverManagerDataSource
+Loaded JDBC driver: com.mysql.jdbc.Driver
+[2016-11-11 13:26:15][INFO ] org.springframework.orm.hibernate5.HibernateTransactionManager
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@27a7ef08] of Hibernate SessionFactory for HibernateTransactionManager
+[2016-11-11 13:27:56][INFO ] org.springframework.context.support.ClassPathXmlApplicationContext
+Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@136432db: startup date [Fri Nov 11 13:27:56 CST 2016]; root of context hierarchy
+[2016-11-11 13:27:57][INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader
+Loading XML bean definitions from class path resource [applicationContext.xml]
+[2016-11-11 13:27:57][INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader
+Loading XML bean definitions from class path resource [spring-bean.xml]
+[2016-11-11 13:27:58][INFO ] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2016-11-11 13:27:58][INFO ] org.springframework.jdbc.datasource.DriverManagerDataSource
+Loaded JDBC driver: com.mysql.jdbc.Driver
+[2016-11-11 13:28:01][INFO ] org.springframework.orm.hibernate5.HibernateTransactionManager
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@27a7ef08] of Hibernate SessionFactory for HibernateTransactionManager
+[2016-11-11 13:28:18][INFO ] org.springframework.context.support.ClassPathXmlApplicationContext
+Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@136432db: startup date [Fri Nov 11 13:28:18 CST 2016]; root of context hierarchy
+[2016-11-11 13:28:18][INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader
+Loading XML bean definitions from class path resource [applicationContext.xml]
+[2016-11-11 13:28:19][INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader
+Loading XML bean definitions from class path resource [spring-bean.xml]
+[2016-11-11 13:28:19][INFO ] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2016-11-11 13:28:20][INFO ] org.springframework.jdbc.datasource.DriverManagerDataSource
+Loaded JDBC driver: com.mysql.jdbc.Driver
+[2016-11-11 13:28:23][INFO ] org.springframework.orm.hibernate5.HibernateTransactionManager
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@27a7ef08] of Hibernate SessionFactory for HibernateTransactionManager
+[2016-11-11 13:29:16][INFO ] org.springframework.context.support.ClassPathXmlApplicationContext
+Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@136432db: startup date [Fri Nov 11 13:29:16 CST 2016]; root of context hierarchy
+[2016-11-11 13:29:16][INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader
+Loading XML bean definitions from class path resource [applicationContext.xml]
+[2016-11-11 13:29:17][INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader
+Loading XML bean definitions from class path resource [spring-bean.xml]
+[2016-11-11 13:29:17][INFO ] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2016-11-11 13:29:18][INFO ] org.springframework.jdbc.datasource.DriverManagerDataSource
+Loaded JDBC driver: com.mysql.jdbc.Driver
+[2016-11-11 13:29:21][INFO ] org.springframework.orm.hibernate5.HibernateTransactionManager
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@27a7ef08] of Hibernate SessionFactory for HibernateTransactionManager

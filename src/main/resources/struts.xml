@@ -8,9 +8,56 @@
 	<constant name="struts.multipart.maxSize" value="204857600" />
 	<constant name="struts.objectFactory" value="spring"/>
 	
+	<package name="vote_api" namespace="/api" extends="struts-default">
+		<result-types>
+            <result-type name="json" class="org.apache.struts2.json.MyJSONResult"/>
+        </result-types>
+		<interceptors>
+			<interceptor name="exceptionInterceptor" class="yingjianhua.vote.interceptor.ExceptionInterceptor" />
+			<interceptor name="StatisticsInterceptor" class="yingjianhua.vote.interceptor.StatisticsInterceptor" />
+			
+			<interceptor-stack name="vote_api">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="exceptionInterceptor" />
+				<interceptor-ref name="StatisticsInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+    	<default-interceptor-ref name="vote_api"></default-interceptor-ref>
+		<global-results>
+			<result name="bean" type="json">
+				<param name="root">bean</param>
+			</result>
+			<result name="beans" type="json">
+				<param name="root">beans</param>
+			</result>
+			<result name="pages" type="json">
+				<param name="root">pages</param>
+			</result>
+			<result name="object" type="json">
+				<param name="root">object</param>
+			</result>
+		</global-results>
+		<action name="vote_*" class="waActVoteAction" method="{1}"></action>
+		<action name="voteEntry_*" class="waActVoteEntryAction" method="{1}"></action>
+		<action name="wxAccount_*" class="wxAccountAction" method="{1}"></action>
+	</package>
 	<package name="vote" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="exceptionInterceptor" class="yingjianhua.vote.interceptor.ExceptionInterceptor" />
+			<interceptor name="StatisticsInterceptor" class="yingjianhua.vote.interceptor.StatisticsInterceptor" />
+			<interceptor name="authorizeInterceptor" class="yingjianhua.vote.interceptor.AuthorizeInterceptor" />
+			
+			<interceptor-stack name="vote">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="exceptionInterceptor" />
+				<interceptor-ref name="StatisticsInterceptor" />
+				<interceptor-ref name="authorizeInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="vote"></default-interceptor-ref>
 		<action name="*" class="voteAction">
 			<result>/index.html</result>
+			<result name="error">/404.html</result>
 		</action>
 	</package>
 	

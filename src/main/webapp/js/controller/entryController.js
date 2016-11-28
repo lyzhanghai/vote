@@ -7,7 +7,13 @@ angular.module("mainApp")
 	"wxService",
 	"$routeParams",
 	function(r, s, l, cs, ws, rp) {
+		s.$on("actionInfoSucc", function() {
+			console.log(r.home.currentTabId)
+			if(r.home.currentTabId==3)
+				ws.config(["chooseImage", "previewImage", "uploadImage"]);
+		})
 		var init = function() {
+			r.home.currentTabId = 3;
 			s.params = cs.getEntryParams();
 			s.tips = "（若在线报名失败，可以将报名信息：";
 			s.params.forEach(function(param, index, b, c) {
@@ -17,8 +23,25 @@ angular.module("mainApp")
 					s.tips=s.tips+"+"+param.text;
 			})
 			s.tips += " 发到邮箱：huyuanyuan@lexiangapp.cn）";
-			r.home.currentTabId = 3;
-			ws.config();
+		}
+		s.chooseImage = function() {
+			ws.chooseImage(9, function(res) {
+				if(!s.images) s.images=[]
+				res.localIds.forEach(function(localId) {
+					var image = {localId:localId};
+					ws.uploadImage(localId, function(serverId) {
+						image.serverId = serverId;
+					})
+					s.images.push(image)
+				});
+			})
+		}
+		s.previewImage = function(src) {
+			var urls = []
+			s.images.forEach(function(image) {
+				urls.push(images.localId)
+			})
+			ws.previewImage(src, urls);
 		}
 		s.entrySubmit = function() {
 			var data={};
@@ -37,14 +60,15 @@ angular.module("mainApp")
 				r.showMessage(1, error.field+error.reason);
 				return
 			}
-			var entry = cs.entry(data);
-			var entrySuccess = function() {
-				r.showDetail(entry)
-			}
-			if(entry.success) {
-				r.showMessage(1, "报名成功", entrySuccess);
-			} else
+			cs.entry(data).success(function(entry) {
+				if(entry.success) {
+					r.showMessage(1, "报名成功", function() {r.showDetail(entry)});
+				} else {
+					r.showMessage(2, "报名失败");	
+				}
+			}).error(function() {
 				r.showMessage(2, "报名失败");
+			});
 		}
 		init();
 	}]

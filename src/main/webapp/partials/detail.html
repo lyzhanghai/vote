@@ -8,8 +8,8 @@
 	<div class="user_img">
 		<div class="bd">
 		    <ul rn-carousel rn-carousel-auto-slide rn-carousel-loop class="carousel1">
-		     <li ng-repeat="picUrl in detail.picUrls track by $index">
-		    		<img ng-src="{{picUrl}}"/>
+		     <li ng-repeat="picUrl in detail.picUrls|orderBy:picUrl.sort">
+		    		<img ng-src="{{picUrl.picUrl}}"/>
 		     </li>
 		    </ul>
 		</div>

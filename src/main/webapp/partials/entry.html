@@ -4,13 +4,16 @@
 		<div class="wxhd_form_td clearfix" ng-repeat="param in params">
 			<div class="wxhd_form_tt" ng-bind-html="param.form_text"></div>
 			<div ng-if="param.type==1" class="wxhd_form_input">
-				<input type="text" name="{{param.name}}" ng-model="param.value"require/>
+				<input type="text" name="{{param.name}}" ng-model="param.value" require/>
 			</div>
 			<div ng-if="param.type==2" class="wxhd_form_input">
 				<ul class="wxhd_sign_img_list clearfix" id="imgUL">
-				<img ng-src="">
+				<div ng-if="images">
+					<input type="hidden" ng-model="param.value" value="images.length"/>
+					<img ng-src="{{image.localId}}" ng-repeat="image in images" ng-click="previewImage({{image.localId}})">
+				</div>
 				<li id="choseLI">
-					<a id="chooseImage"></a>
+					<a ng-click="chooseImage()"></a>
 				</li>
 				</ul>
 			</div>

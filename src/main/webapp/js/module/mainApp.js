@@ -13,7 +13,7 @@ app.config([
 	.when("/:voteId/404",{name:"404",templateUrl:"partials/404.html", controller:"404Controller"})
 	.otherwise({redirectTo:"/0/404"})
 }])
-app.run(["$rootScope", "$location", "commonService", "SITE_CONFIG", function(r, $location, commonService, SITE_CONFIG) {
+app.run(["$rootScope", "$location", "$timeout", "commonService", "SITE_CONFIG", function(r, $location, $timeout, commonService, SITE_CONFIG) {
 	var g=document.createElement("script");
 	g.src="//res.wx.qq.com/open/js/jweixin-1.0.0.js",
 	g.async=!1;
@@ -38,10 +38,31 @@ app.run(["$rootScope", "$location", "commonService", "SITE_CONFIG", function(r, 
 	r.closeMessage = function() {
 		r.message.show = false;
 	}
+	var refreshVoteInfo = function() {
+		commonService.getVoteInfo(r.voteId)
+		.success(function(data){
+			r.voteInfo = {};
+			r.voteInfo.entrycount = data.entrycount;
+			r.voteInfo.votecount = data.votecount;
+			r.voteInfo.visitcount = data.visitcount;
+			$timeout(refreshVoteInfo, 5000);
+		})	
+	}
 	r.$on("$routeChangeStart", function(evt, next, previous) {
 		if(!r.voteId&&next.params.voteId) {
 			r.voteId = next.params.voteId;
-			r.actionInfo = commonService.getActionInfo(r.voteId);
+		}
+		if(!r.actionInfo){
+			commonService.getActionInfo(r.voteId)
+			.success(function(data){
+				data.account.qrcode=(r.BASE_URL+"/img/qrcode/"+data.account.id+".jpg");
+				r.actionInfo=data;
+				console.log("succ")
+				r.$broadcast("actionInfoSucc");
+			});
+		} else {
+			console.log("succ")
+			r.$broadcast("actionInfoSucc");
 		}
 		if(!r.homeTabs&&(menus=commonService.getMenus())) {
 			menus.forEach(function(menu) {
@@ -50,15 +71,19 @@ app.run(["$rootScope", "$location", "commonService", "SITE_CONFIG", function(r, 
 			})
 			r.homeTabs=menus;
 		}
+		if(!r.voteInfo) {
+			refreshVoteInfo();
+		}
 	})
-	console.log($location)
-	r.banners = commonService.getBanners();
-	r.voteInfo = commonService.getVoteInfo();
 	r.home = r.home||{currentTabId : 1};
-	r.switchTab=function(t) {
-		console.log(t)
-		r.home.currentTabId=t.id;
-		$location.path(t.url);
-		$location.replace();
+	r.switchTab=function(index) {
+		var t = r.homeTabs[index];
+		if(t.type==2) {
+			location.href=t.url;
+		} else if(t.type==1) {
+			r.home.currentTabId=t.id;
+			$location.path(t.url);
+			$location.replace();
+		}
 	}
 }])

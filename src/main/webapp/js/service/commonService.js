@@ -1,11 +1,12 @@
 angular.module("resourceModule")
-.factory("commonService", ["$http", function(h) {
+.factory("commonService", ["$http", "$rootScope", "SITE_CONFIG", function(h, rs, SITE_CONFIG) {
+	var a = SITE_CONFIG.BASE_URL+SITE_CONFIG.API_URL;
 	return {
 		getEntryParams:function() {
 			return [{"text":"姓名", "form_text":"姓名：", "type":1, "name":"name"},
 			        {"text":"电话", "form_text":"电话：", "type":1, "name":"phone"},
 			        {"text":"年龄", "form_text":"年龄：", "type":1, "name":"des"},
-			        {"text":"参赛照片", "form_text":"参赛　<br>照片：", "type":2, "name":"picUrl"}]
+			        {"text":"参赛照片", "form_text":"参赛　<br>照片：", "type":2, "name":"picMedidIds"}]
 		},
 		getBanners:function() {
 			return [{"id":1, "linkUrl":"", "picUrl":"http://www.51xiangshiguang.com/vote/vote/img/banner-1.jpg", "title":"享食光，一个优质的生活美食馆", "sort":1},
@@ -20,28 +21,21 @@ angular.module("resourceModule")
 		            {id:3, name:"投票", icon:"float_nav3", url:"/entry/", type:1},
 		            {id:4, name:"享食光", icon:"float_nav4", url:"http://www.51xiangshiguang.com/srdz/wpt/startJourney?account.pkey=10", type:2}];
 		},
-		getHomeDes:function() {
-			return '<img class="lazy-img" src="http://www.51xiangshiguang.com/wx/uploads/20161105/Sys/1151478316358381.jpg">\
-					<img class="lazy-img" src="http://www.51xiangshiguang.com/wx/uploads/20161103/Sys/1131478142350222.jpg">\
-					<img class="lazy-img" src="http://www.51xiangshiguang.com/wx/uploads/20161104/Sys/1141478223553516.jpg">\
-					<img class="lazy-img" y-lazy-src="http://www.51xiangshiguang.com/wx/uploads/20161104/Sys/1141478223553516.jpg">';
+		getHomeDes:function(voteId) {
+			return h({method:"GET",url:a+"/vote_homeDes",params:{voteId:voteId}});
 		},
-		getVoteInfo:function() {
-			return {
-				entrycount: 80,
-				votecount:1000,
-				visitcount:12310
-			}
+		getVoteInfo:function(voteId) {
+			return h({method:"GET", url:a+"/vote_voteInfo",params:{voteId:voteId}});
 		},
 		getActionInfo:function(voteId) {
-			return {
-				"id":voteId, 
-				"account":{
-					"qrcode":"http://www.51xiangshiguang.com/wx/wa/vote/1601/assets/img/qrcode/13.jpg"
-					}
-			};
+			return h({method:"GET",url:a+"/vote_info",params:{voteId:voteId}});
 		},
-		getEntryList:function(page) {
+		getEntryList:function(voteId, page, condition, orderBy) {
+			var limit = 6;
+			var start = (page-1)*limit
+			return h({method:"GET", url:a+"/voteEntry_entryList", params:{voteId:voteId,start:start,limit:limit,condition:condition,orderBy:orderBy}});
+		},
+		getEntryList2:function(page) {
 			var data = [{"id":1, "number":1, "record":10,"picUrl":"http://lorempixel.com/400/600/abstract"},
 					       {"id":2, "number":2, "record":10,"picUrl":"http://lorempixel.com/400/300/technics"},
 					       {"id":3, "number":3, "record":10,"picUrl":"http://lorempixel.com/400/500/sports"},
@@ -58,16 +52,19 @@ angular.module("resourceModule")
 			return {
 				total:data.length,
 				items:data.slice((page-1)*limit, page*limit)
-			}
+			}			
 		},
 		getDetail:function(playerId) {
-			return {"id":1, "name":"媛媛", "number":3, "count":10, "rank":2, "picUrls":["http://lorempixel.com/400/300/people","http://lorempixel.com/400/300/people","http://lorempixel.com/400/300/people"]};
+			return h({method:"GET",url:a+"/voteEntry_detail",params:{entryId:playerId}});
 		},
 		vote:function(playerId) {
-			return {"success":true, "id":1, "name":"媛媛", "number":3, "count":11, "rank":1, "picUrls":["http://lorempixel.com/400/300/people","http://lorempixel.com/400/300/people","http://lorempixel.com/400/300/people"]};
+			return h({method:"GET",url:a+"/voteEntry_vote", params:{entryId:playerId}});
+			//return {"success":true, "id":1, "name":"媛媛", "number":3, "count":11, "rank":1, "picUrls":["http://lorempixel.com/400/300/people","http://lorempixel.com/400/300/people","http://lorempixel.com/400/300/people"]};
 		},
 		entry:function(param) {
-			return {"success":true, "id":13, "name":param.name, "number":13, "count":0, "rank":13, "picUrls":[]};
+			var params =param||{}
+			params.voteId = rs.voteId;
+			return h({method:"GET", url:a+"/voteEntry_entry"}, param);
 		}
 	}
 }])

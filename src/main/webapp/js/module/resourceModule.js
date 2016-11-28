@@ -1,1 +1,1 @@
-angular.module("resourceModule", []);
+angular.module("resourceModule", ["configModule"]);
